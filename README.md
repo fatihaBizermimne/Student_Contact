@@ -53,4 +53,12 @@ Make sure you have the following installed:
     Click the "Delete" button next to the contact you wish to delete.
     
 ## Screenshots
+
+![photo 1](https://github.com/fatihaBizermimne/Student_Contact/blob/main/photo%201.png?raw=true)
+
+![photo 2](https://github.com/fatihaBizermimne/Student_Contact/blob/main/photo%202.png?raw=true)
+
+![photo 3](https://github.com/fatihaBizermimne/Student_Contact/blob/main/photo%203.png?raw=true)
+
+![photo 4](https://github.com/fatihaBizermimne/Student_Contact/blob/main/photo%204.png?raw=true)
  
