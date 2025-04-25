@@ -1,0 +1,24 @@
+2025-04-24 23:23:28.6447|DEBUG|Program|location of wsfscservice is: C:\Users\lenovo\.nuget\packages\websharper.fsharp\8.0.0.540\tools\net8.0\win-x64 (server side)
+2025-04-24 23:23:28.8855|DEBUG|Program|pipename is: 3f5de9ca7c5d7fae96734a23c4420bc6 (server side)
+2025-04-24 23:23:28.8855|DEBUG|Program|Compiling C:\Users\lenovo\source\repos\StudentContact\StudentContact\StudentContact.fsproj
+2025-04-24 23:23:35.7683|TRACE|Program|Server sends: n: F# compilation: 00:00:07.1532742
+2025-04-24 23:23:40.4965|TRACE|Program|Server sends: n: Checking project: 00:00:04.7290539
+2025-04-24 23:23:40.4965|TRACE|Program|Server sends: n: Waiting on merged metadata: 00:00:00.0014651
+2025-04-24 23:23:40.7828|TRACE|Program|Server sends: n: Parsing with FCS: 00:00:00.2848259
+2025-04-24 23:23:40.7828|TRACE|Program|Server sends: n: Analyzing function arguments: 00:00:00.0021092
+2025-04-24 23:23:40.8230|TRACE|Program|Server sends: n: Resolving names: 00:00:00.0381480
+2025-04-24 23:23:41.0126|TRACE|Program|Server sends: n: WebSharper translation: 00:00:00.1895247
+2025-04-24 23:23:41.0126|TRACE|Program|Server sends: n: Source position transformations: 00:00:00.0056790
+2025-04-24 23:23:41.0433|TRACE|Program|Server sends: n: Packaging assembly: 00:00:00.0250305
+2025-04-24 23:23:41.4100|TRACE|Program|Server sends: n: Computing metadata: 00:00:00.3666922
+2025-04-24 23:23:41.4361|TRACE|Program|Server sends: n: Writing reexports root.js: 00:00:00.0259521
+2025-04-24 23:23:41.4557|TRACE|Program|Server sends: n: Writing StudentContact.ContactManager.Contact.js: 00:00:00.0197858
+2025-04-24 23:23:41.4557|TRACE|Program|Server sends: n: Writing StudentContact.ContactManager.js: 00:00:00.0013539
+2025-04-24 23:23:41.4557|TRACE|Program|Server sends: n: Writing $StartupCode_Client.js: 00:00:00.0015866
+2025-04-24 23:23:41.4557|TRACE|Program|Server sends: n: Writing $EntryPoint.js: 00:00:00.0016656
+2025-04-24 23:23:41.4641|TRACE|Program|Server sends: n: Writing .d.ts files: 00:00:00.0037853
+2025-04-24 23:23:41.4641|TRACE|Program|Server sends: n: Hashing resources: 00:00:00.0014698
+2025-04-24 23:23:41.7685|TRACE|Program|Server sends: n: Serializing metadata: 00:00:00.3029349
+2025-04-24 23:23:41.8970|TRACE|Program|Server sends: n: Writing resources into assembly: 00:00:00.1285209
+2025-04-24 23:23:42.3250|TRACE|Program|Server sends: n: Bundling: 00:00:00.4280069
+2025-04-24 23:23:42.3420|TRACE|Program|Server sends: x: 0
