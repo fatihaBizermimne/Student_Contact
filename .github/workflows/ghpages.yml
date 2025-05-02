@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,9 +28,17 @@ jobs:
             --password "${{ secrets.WEBSHARPER_FEED }}" \
             --store-password-in-clear-text
 
-      - run: npm install -g vite
-      - run: dotnet build
-      - run: npx vite build --outDir ../dist --base ./
+      - name: Install Vite
+        run: npm install -g vite
+
+      - name: Build the project
+        run: dotnet build
+
+      - name: Copy StudentContact.js manually
+        run: cp wwwroot/StudentContact.js wwwroot/dist/
+
+      - name: Build frontend
+        run: npx vite build --outDir ../dist --base ./
         working-directory: wwwroot/
 
       - name: Deploy
