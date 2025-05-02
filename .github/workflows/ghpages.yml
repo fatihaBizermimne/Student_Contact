@@ -1,31 +1,40 @@
-name: Deploy WebSharper SPA
-
+name: Build and Deploy
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
-
+    branches:
+      - main
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false 
+          submodules: true
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '6.0.x'
 
-      - name: Verify critical files
+      - name: Add GitHub registry NuGet source
         run: |
-          [ -f wwwroot/StudentContact.js ] || { echo "Error: StudentContact.js missing"; exit 1; }
-          [ -f wwwroot/index.html ] || { echo "Error: index.html missing"; exit 1; }
-          echo "All required files present"
+          dotnet nuget add source https://nuget.pkg.github.com/dotnet-websharper/index.json \
+            --name github \
+            --username fatihaBizermimne \
+            --password "${{ secrets.WEBSHARPER_FEED }}" \
+            --store-password-in-clear-text
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - run: npm install -g vite
+      - run: dotnet build
+      - run: npx vite build --outDir ../dist --base ./
+        working-directory: wwwroot/
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: wwwroot
-          keep_files: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
