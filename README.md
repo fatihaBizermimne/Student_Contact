@@ -1,6 +1,8 @@
 # Student_Contact
 A student contact web application built with WebSharper and F#. Users can input, view, edit, and delete their contact information.
 
+You can preview the site here : [https://btag16.github.io/Contact-Manager/](https://fatihabizermimne.github.io/Student_Contact/)
+
 
 ## Features
 
