@@ -1,40 +1,39 @@
-name: Build and Deploy
+name: Deploy WebSharper SPA
+
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false 
-          submodules: true
+      - uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      - name: Add GitHub registry NuGet source
+      - name: Add WebSharper Feed
         run: |
-          dotnet nuget add source https://nuget.pkg.github.com/dotnet-websharper/index.json \
-            --name github \
+          dotnet nuget add source \
             --username fatihaBizermimne \
-            --password "${{ secrets.WEBSHARPER_FEED }}" \
-            --store-password-in-clear-text
+            --password ${{ secrets.WEBSHARPER_FEED }} \
+            --store-password-in-clear-text \
+            --name websharper \
+            https://nuget.websharper.com/feed/nuget/index.json
 
-      - run: npm install -g vite
-      - run: dotnet build
-      - run: npx vite build --outDir ../dist --base ./
-        working-directory: wwwroot/
+      - name: Publish
+        run: dotnet publish -c Release -o ./publish
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
